@@ -30,8 +30,8 @@ namespace Infusion
             }
             catch ( Exception e )
             {
-                Log.Error( e.ToString() );
-				Log.Warning("LT-IN: InfusionManager met an error. Hibernating.");
+				Log.Error( e.ToString() );
+				Log.Warning("Infusion: InfusionManager met an error. Hibernating.");
 				welfare = false;
             }
         }
@@ -43,10 +43,10 @@ namespace Infusion
         //Infuse items of raiders and visitors, etc
         private static void InfuseEquipmentsOnMap()
         {
-            foreach (var pawn in Find.ListerPawns.AllPawns)
+            foreach (var pawn in Find.MapPawns.AllPawns)
             {
                 // No humanlike neither mechanoid, pass
-                if (!pawn.def.race.Humanlike && !pawn.def.race.mechanoid)
+                if (!pawn.def.race.Humanlike && !pawn.def.race.IsMechanoid)
                     continue;
 
                 InfuseWeapon( pawn );
@@ -57,14 +57,13 @@ namespace Infusion
         private static void InfuseWeapon(Pawn pawn)
         {
             //Pawn has primary
-            var compInfusion = pawn.equipment.Primary?.TryGetComp<CompInfusion>();
-            if ( compInfusion == null || compInfusion.tried )
-            {
-                return;
-            }
-
-            compInfusion.SetInfusion();
-            compInfusion.tried = true;
+			if (pawn.equipment.Primary != null) {
+				var compInfusion = pawn.equipment.Primary.TryGetComp<CompInfusion> ();
+				if (compInfusion != null && ! compInfusion.tried) {
+					compInfusion.SetInfusion();
+					compInfusion.tried = true;
+				}
+			}
         }
         private static void InfuseApparels( Pawn pawn )
         {
@@ -99,23 +98,25 @@ namespace Infusion
 
                 var field = typeof(TradeShip).GetField( "things", BindingFlags.NonPublic | BindingFlags.Instance);
 
-	            var stock = field?.GetValue( ship ) as List< Thing >;
-                if ( stock == null )
-                {
-#if DEBUG
-                    Log.Error("LT-IN: Could not get value from field");
-#endif
-                    continue;
-                }
+				if (field != null) {
+					var stock = field.GetValue (ship) as List< Thing >;
+					if (stock != null) {
+						foreach ( var current in stock )
+						{
+							var compInfusion = current.TryGetComp< CompInfusion >();
+							if ( compInfusion == null || compInfusion.tried )
+								continue;
 
-                foreach ( var current in stock )
-                {
-                    var compInfusion = current.TryGetComp< CompInfusion >();
-                    if ( compInfusion == null || compInfusion.tried )
-                        continue;
-                    
-                    compInfusion.SetInfusion(  );
-                }
+							compInfusion.SetInfusion(  );
+						}
+					} else {
+#if DEBUG
+						Log.Error("Infusion: Could not get value from field");
+#endif
+						continue;
+					}
+				}
+ 
                 if(shipDict.Count > 5)
                     shipDict.Clear();
 
@@ -126,7 +127,7 @@ namespace Infusion
         //Draw infusion label on map
         private static void Draw()
         {
-            if (Find.CameraMap.CurrentZoom != CameraZoomRange.Closest) return;
+			if (Find.CameraDriver.CurrentZoom != CameraZoomRange.Closest) return;
             if (InfusionLabelManager.Drawee.Count == 0)
                 return;
 

@@ -5,7 +5,7 @@ namespace Infusion
 {
 	public static class InfusionLabelManager
 	{
-		public static List<CompInfusion> Drawee { get; }
+		public static List<CompInfusion> Drawee { get; set; }
 
 		static InfusionLabelManager()
 		{

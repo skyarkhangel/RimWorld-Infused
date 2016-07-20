@@ -31,6 +31,7 @@ namespace Infusion
 
 	public class InfusionDef : Def
 	{
+		#region XML Data
 		public string labelShort = "#NN";
 		public Dictionary<StatDef, StatMod> stats = new Dictionary<StatDef, StatMod>();
 
@@ -39,6 +40,7 @@ namespace Infusion
 
 		public InfusionAllowance allowance = new InfusionAllowance();
 		//public bool furniture = false;
+		#endregion
 
 		/// <summary>
 		/// Get matching StatMod for given StatDef. Returns false when none.

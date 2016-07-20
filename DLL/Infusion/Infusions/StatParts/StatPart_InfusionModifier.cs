@@ -32,7 +32,7 @@ namespace Infusion
             var stat = notifier.ToStatDef();
             if ( stat == null )
             {
-                Log.ErrorOnce( "Could not find notifier's StatDef, which is " + notifier, 3388123 );
+				Log.ErrorOnce( "Infusion: Could not find notifier's StatDef, which is " + notifier, 3388123 );
                 return;
             }
             //"Notifier" will notify below lines about the actual StatDef it is adjusting, via XML-written notifier string.

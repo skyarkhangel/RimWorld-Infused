@@ -1,82 +1,68 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6590BA22-19A8-4D95-A08A-7612FB197A61}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Infusion</RootNamespace>
     <AssemblyName>Infusion</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>D:\1\RimWorld914Win\Mods\LT_Infusion\Assemblies\</OutputPath>
+    <OutputPath>..\..\Assemblies\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>D:\1\RimWorld914Win\Mods\LT_Infusion\Assemblies\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>..\..\Assemblies\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>D:\1\RimWorld914Win\RimWorld914Win_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>D:\1\RimWorld914Win\RimWorld914Win_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infusions\ThingClasses\ApparelWithInfusions.cs" />
-    <Compile Include="Infusions\Comp\CompInfusion.cs" />
-    <Compile Include="Infusions\UI\ITab_Infusion.cs" />
-    <Compile Include="Infusions\StatParts\StatPart_InfusionModifierTemperature.cs" />
-    <Compile Include="Infusions\StatParts\StatPart_InfusionWorkerTemperature.cs" />
-    <Compile Include="Infusions\ThingClasses\ThingWithInfusions.cs" />
-    <Compile Include="ICommon\Gens\GenInfusionColor.cs" />
-    <Compile Include="ICommon\Gens\MathUtility.cs" />
-    <Compile Include="ICommon\Gens\TextUtility.cs" />
-    <Compile Include="Infusions\InfusionLabelManager.cs" />
-    <Compile Include="Infusions\InfusionDef.cs" />
-    <Compile Include="ICommon\Gens\GenInfusion.cs" />
-    <Compile Include="Infusions\MapComponent\MapComponent_InfusionManager.cs" />
-    <Compile Include="Infusions\InfusionSet.cs" />
-    <Compile Include="ICommon\ModInitializers\ModInitComponent.cs" />
-    <Compile Include="ICommon\ModInitializers\ModInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ICommon\ResourceBank.cs" />
     <Compile Include="ICommon\StatMod.cs" />
+    <Compile Include="ICommon\Gens\GenInfusion.cs" />
+    <Compile Include="ICommon\Gens\GenInfusionColor.cs" />
+    <Compile Include="ICommon\Gens\MathUtility.cs" />
+    <Compile Include="ICommon\Gens\TextUtility.cs" />
+    <Compile Include="ICommon\ModInitializers\ModInitComponent.cs" />
+    <Compile Include="ICommon\ModInitializers\ModInitializer.cs" />
+    <Compile Include="Infusions\InfusionDef.cs" />
+    <Compile Include="Infusions\InfusionLabelManager.cs" />
+    <Compile Include="Infusions\InfusionSet.cs" />
+    <Compile Include="Infusions\Comp\CompInfusion.cs" />
+    <Compile Include="Infusions\MapComponent\MapComponent_InfusionManager.cs" />
     <Compile Include="Infusions\StatParts\StatPart_InfusionModifier.cs" />
+    <Compile Include="Infusions\StatParts\StatPart_InfusionModifierTemperature.cs" />
     <Compile Include="Infusions\StatParts\StatPart_InfusionWorker.cs" />
+    <Compile Include="Infusions\StatParts\StatPart_InfusionWorkerTemperature.cs" />
+    <Compile Include="Infusions\ThingClasses\ApparelWithInfusions.cs" />
+    <Compile Include="Infusions\ThingClasses\ThingWithInfusions.cs" />
+    <Compile Include="Infusions\UI\ITab_Infusion.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

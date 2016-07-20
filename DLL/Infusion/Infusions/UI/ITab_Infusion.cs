@@ -14,11 +14,17 @@ namespace Infusion
             get
             {
                 var thing = Find.Selector.SingleSelectedThing;
-                return thing?.TryGetComp< CompInfusion >();
+				if (thing != null) {
+					return thing.TryGetComp< CompInfusion > ();
+				} else {
+					return null;
+				}
             }
         }
 
-        public override bool IsVisible => SelectedCompInfusion != null && SelectedCompInfusion.Infused;
+		public override bool IsVisible {
+			get { return SelectedCompInfusion != null && SelectedCompInfusion.Infused; }
+		}
 
         public ITab_Infusion()
         {

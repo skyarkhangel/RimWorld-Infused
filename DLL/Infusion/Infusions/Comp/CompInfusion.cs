@@ -8,9 +8,13 @@ namespace Infusion
 {
 	public class CompInfusion : ThingComp
 	{
-		public bool Infused => prefix != null || suffix != null;
+		public bool Infused {
+			get { return prefix != null || suffix != null; }
+		}
 
-		public InfusionSet Infusions => new InfusionSet( prefix, suffix );
+		public InfusionSet Infusions {
+			get { return new InfusionSet (prefix, suffix); }
+		}
 
 		//Did we tried to infuse this item?
 		public bool tried;
@@ -43,7 +47,7 @@ namespace Infusion
 
 			var passPre = true;
 			var passSuf = true;
-			var lowTech = parent.def.techLevel < TechLevel.Midworld;
+			var lowTech = parent.def.techLevel < TechLevel.Industrial;
 
 			var chance = GenInfusion.GetInfusionChance( qc );
 			var rand = Rand.Value;
@@ -81,7 +85,7 @@ namespace Infusion
 				var tier = GenInfusion.GetTier( qc, tierMult );
 				if (
 					!(
-						from t in DefDatabase< InfusionDef >.AllDefs.ToList()
+						from t in DefDatabase< InfusionDef >.AllDefsListForReading
 						where
 							t.tier == tier &&
 							t.type == InfusionType.Prefix &&
@@ -90,7 +94,7 @@ namespace Infusion
 						).TryRandomElement( out preTemp ) )
 				{
 					//No infusion available from defs
-					Log.Warning( "Couldn't find any prefixed InfusionDef! Tier: " + tier );
+					Log.Warning( "Infusion: Couldn't find any prefixed InfusionDef! Tier: " + tier );
 					shouldThrowMote = false;
 					prefix = null;
 				}
@@ -114,7 +118,7 @@ namespace Infusion
 						).TryRandomElement( out preTemp ) )
 				{
 					//No infusion available from defs
-					Log.Warning( "Couldn't find any suffixed InfusionDef! Tier: " + tier );
+					Log.Warning( "Infusion: Couldn't find any suffixed InfusionDef! Tier: " + tier );
 					shouldThrowMote = false;
 					suffix = null;
 				}
@@ -166,7 +170,7 @@ namespace Infusion
 			if ( (prefix != null && prefix.ToInfusionDef() == null) || (suffix != null && suffix.ToInfusionDef() == null) )
 			{
 #if DEBUG
-				Log.Warning( "LT-IN: Could not find some of InfusionDef." + prefix + "/" + suffix );
+				Log.Warning( "Infusion: Could not find some of InfusionDef." + prefix + "/" + suffix );
 #endif
 				tried = false;
 			}

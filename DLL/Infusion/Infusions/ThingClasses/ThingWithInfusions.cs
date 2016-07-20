@@ -5,7 +5,7 @@ namespace Infusion
 {
 	class ThingWithInfusions : ThingWithComps
 	{
-		public override string LabelBase
+		public override string LabelNoCount
 		{
 			get
 			{
@@ -13,7 +13,7 @@ namespace Infusion
 				if (!this.TryGetQuality(out qc) ||
 					this.TryGetComp<CompInfusion>() == null ||
 					!this.TryGetComp<CompInfusion>().Infused)
-					return base.LabelBase;
+					return base.LabelNoCount;
 
 				return this.GetInfusedLabel();
 			}

@@ -6,7 +6,7 @@ namespace Infusion
 {
     internal class ApparelWithInfusions : Apparel
     {
-        public override string LabelBase
+		public override string LabelNoCount
         {
             get
             {
@@ -15,7 +15,7 @@ namespace Infusion
                      this.TryGetComp< CompInfusion >() == null ||
                      !this.TryGetComp< CompInfusion >().Infused )
                 {
-                    return base.LabelBase;
+					return base.LabelNoCount;
                 }
 
                 return this.GetInfusedLabel();

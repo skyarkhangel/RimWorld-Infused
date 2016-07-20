@@ -14,8 +14,12 @@ namespace Infusion
 		public string Prefix;
 		public string Suffix;
 
-		public bool PassPre => Prefix == null;
-		public bool PassSuf => Suffix == null;
+		public bool PassPre {
+			get {return Prefix == null; }
+		}
+		public bool PassSuf {
+			get {return Suffix == null; }
+		}
 
 		public InfusionSet(string pre, string suf)
 		{
@@ -23,6 +27,6 @@ namespace Infusion
 			Suffix = suf;
 		}
 
-		public static InfusionSet Empty => new InfusionSet(null, null);
+		public static InfusionSet Empty = new InfusionSet(null, null);
 	}
 }

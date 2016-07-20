@@ -33,7 +33,7 @@ namespace Infusion
                     var stat = notifier.ToStatDef();
                     if (stat == null)
                     {
-                        Log.ErrorOnce( "Could not find notifier's StatDef, which is " + notifier, 3388123 );
+						Log.ErrorOnce( "Infusion: Could not find notifier's StatDef, which is " + notifier, 3388123 );
                         return;
                     }
                     var prefix = inf.Prefix.ToInfusionDef();
@@ -66,7 +66,7 @@ namespace Infusion
                     var stat = notifier.ToStatDef();
                     if (stat == null)
                     {
-                        Log.ErrorOnce( "Could not find notifier's StatDef, which is " + notifier, 3388123 );
+						Log.ErrorOnce( "Infusion: Could not find notifier's StatDef, which is " + notifier, 3388123 );
                         continue;
                     }
                     var prefix = inf.Prefix.ToInfusionDef();

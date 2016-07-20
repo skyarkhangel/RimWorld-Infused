@@ -27,11 +27,11 @@ namespace Infusion
                 InfusionLabelManager.ReInit();
 
                 InjectVarious();
-                Log.Message( "LT-IN: Initialized Infusion." );
+                Log.Message( "Infusion: Initialized." );
             }
             catch ( Exception ex )
             {
-                Log.Error( "LT-IN: Error Initializing Infusion. Exception:\n" + ex );
+                Log.Error( "Infusion: Error Initializing. Exception:\n" + ex );
             }
         }
 
@@ -43,12 +43,12 @@ namespace Infusion
 		                                                                  BindingFlags.Static | BindingFlags.NonPublic );
 		    if ( field == null )
 		    {
-			    throw new Exception( "LT-IN: field is null" );
+			    throw new Exception( "Infusion: field is null" );
 		    }
 		    var defsByName = field.GetValue( null ) as Dictionary< string, ThingDef >;
 		    if ( defsByName == null )
 		    {
-			    throw new Exception( "LT-IN: Could not access private members" );
+			    throw new Exception( "Infusion: Could not access private members" );
 		    }
 		    try
 		    {
@@ -68,7 +68,7 @@ namespace Infusion
 		    }
 		    catch ( Exception e )
 		    {
-			    throw new Exception("LT-IN: Met error while injecting.\n" + e);
+			    throw new Exception("Infusion: Met error while injecting.\n" + e);
 		    }
         }
         
