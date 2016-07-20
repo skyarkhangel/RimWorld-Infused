@@ -1,4 +1,4 @@
-# RimWorld-Infusion
+# RimWorld-Infused
 
 [![Version](https://img.shields.io/badge/Rimworld-A14-green.svg)]
 (http://rimworldgame.com/)
@@ -17,11 +17,11 @@ If you don't like something or want to add your own infusion, go to InfusionDefs
 
 ##F.A.Q.
 ###Can I install this on existing colonies?
-Yes, you can use Infusion with your ongoing game.
+Yes, you can use Infused with your ongoing game.
 ###Can I use this with (random mod)?
 Unless it redefines any of Core StatDef. You can still able to use both, but either infusion bonus will not work, or (random mod)'s overwrite will be undone.
 ###License info
-Infusion uses this [license](https://ludeon.com/forums/index.php?topic=11171.msg111243#msg111243).
+Infused uses this [license](https://ludeon.com/forums/index.php?topic=11171.msg111243#msg111243).
 
 ##Requirements
 [Community Core Library](https://github.com/RimWorldCCLTeam/CommunityCoreLibrary)

@@ -2,14 +2,14 @@
 <Defs>
 
     <CommunityCoreLibrary.ModHelperDef>
-        <defName>LT-Infusion</defName>
+        <defName>Infused</defName>
 
-        <ModName>LT-Infusion</ModName>
+        <ModName>Infused</ModName>
 		
         <minCCLVersion>0.14.0</minCCLVersion>
 
         <MapComponents>
-            <li>Infusion.MapComponent_InfusionManager</li>
+            <li>Infused.MapComponent_InfusionManager</li>
         </MapComponents>
 
     </CommunityCoreLibrary.ModHelperDef>
