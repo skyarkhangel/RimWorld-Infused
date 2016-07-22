@@ -5,7 +5,7 @@
 
   <StatDef>
     <defName>SculptingSpeed</defName>
-    <label>Sculpting speed</label>
+    <label>sculpting speed</label>
     <description>Speed at which this person sculpts.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -28,15 +28,15 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>SculptingSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>SculptingSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
 
   <StatDef>
     <defName>TailoringSpeed</defName>
-    <label>Tailoring speed</label>
+    <label>tailoring speed</label>
     <description>Speed at which this person makes clothes.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -59,17 +59,16 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>TailoringSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>TailoringSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
   <StatDef>
     <defName>SmithingSpeed</defName>
-    <label>Smithing speed</label>
-    <description>Speed at which this person smiths or crafts weapons, machines, ammunition and tools.</description>
+    <label>smithing speed</label>
+    <description>Speed at which this person smiths or crafts weapons, machines, ammunition, and tools.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
     <toStringStyle>PercentZero</toStringStyle>
@@ -91,9 +90,9 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>SmithingSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>SmithingSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
 
@@ -102,10 +101,10 @@
 
 
   <!-- Production recipes - speed affected by skill.-->
-
+  
   <StatDef>
     <defName>CookSpeed</defName>
-    <label>Cooking speed</label>
+    <label>cooking speed</label>
     <description>Speed at which this person cooks meals.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -135,16 +134,15 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>CookSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>CookSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
     <StatDef>
     <defName>FoodPoisonChance</defName>
-    <label>Food poison chance</label>
+    <label>food poison chance</label>
     <description>The probability that this character will inadvertently poison a meal they cook.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -178,16 +176,15 @@
       </li>
     </skillNeedFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>FoodPoisonChance</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>FoodPoisonChance</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
   <StatDef>
     <defName>BrewingSpeed</defName>
-    <label>Brewing speed</label>
+    <label>brewing speed</label>
     <description>Speed at which this person brews beer.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -217,18 +214,15 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>BrewingSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>BrewingSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
-
-
   <StatDef>
     <defName>ButcheryFleshSpeed</defName>
-    <label>Butchery speed</label>
+    <label>butchery speed</label>
     <description>Speed at which this person butchers flesh creatures.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -258,15 +252,14 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>ButcheryFleshSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>ButcheryFleshSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
-
   <StatDef>
     <defName>ButcheryFleshEfficiency</defName>
-    <label>Butchery efficiency</label>
+    <label>butchery efficiency</label>
     <description>Multiplier on the amount of meat produced when butchering flesh animals.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -289,17 +282,15 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>ButcheryFleshEfficiency</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>ButcheryFleshEfficiency</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
-
   <StatDef>
     <defName>ButcheryMechanoidSpeed</defName>
-    <label>Mechanoid disassembly speed</label>
+    <label>mechanoid disassembly speed</label>
     <description>Speed at which this person can disassemble a mechanoid.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -329,15 +320,14 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>ButcheryMechanoidSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>ButcheryMechanoidSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
-
   <StatDef>
     <defName>ButcheryMechanoidEfficiency</defName>
-    <label>Mechanoid disassembly efficiency</label>
+    <label>mechanoid disassembly efficiency</label>
     <description>Multiplier on the amount of materials yielded when this person disassembles a dead mechanoid.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -360,16 +350,15 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>ButcheryMechanoidEfficiency</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>ButcheryMechanoidEfficiency</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
   <StatDef>
     <defName>StonecuttingSpeed</defName>
-    <label>Stonecutting speed</label>
+    <label>stonecutting speed</label>
     <description>Speed at which this person cuts rough stone into blocks.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -392,16 +381,15 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>StonecuttingSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>StonecuttingSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
 
-
   <StatDef>
     <defName>SmeltingSpeed</defName>
-    <label>Smelting speed</label>
+    <label>smelting speed</label>
     <description>Speed at which this person smelts things.</description>
     <category>PawnWork</category>
     <defaultBaseValue>1</defaultBaseValue>
@@ -424,12 +412,10 @@
       </li>
     </capacityFactors>
     <parts>
-			<li Class="Infused.StatPart_InfusionWorker">
-				<notifier>SmeltingSpeed</notifier>
-			</li>
+      <li Class="Infused.StatPart_InfusionWorker">
+        <notifier>SmeltingSpeed</notifier>
+      </li>
     </parts>
   </StatDef>
-
-
 
 </StatDefs>
