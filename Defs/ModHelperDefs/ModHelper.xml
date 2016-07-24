@@ -6,7 +6,11 @@
 
         <ModName>Infused</ModName>
 		
-        <minCCLVersion>0.14.0</minCCLVersion>
+        <minCCLVersion>0.14.1</minCCLVersion>
+
+        <SpecialInjectors>
+            <li>Infused.ModInjector</li>
+        </SpecialInjectors>
 
         <MapComponents>
             <li>Infused.MapComponent_InfusionManager</li>

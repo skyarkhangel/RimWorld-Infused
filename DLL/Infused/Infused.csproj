@@ -39,6 +39,10 @@
       <HintPath>..\..\..\..\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Community Core Library">
+      <HintPath>..\..\..\Community Core Library\Assemblies\Community Core Library.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,8 +52,6 @@
     <Compile Include="ICommon\Gens\GenInfusionColor.cs" />
     <Compile Include="ICommon\Gens\MathUtility.cs" />
     <Compile Include="ICommon\Gens\TextUtility.cs" />
-    <Compile Include="ICommon\ModInitializers\ModInitComponent.cs" />
-    <Compile Include="ICommon\ModInitializers\ModInitializer.cs" />
     <Compile Include="Infusions\InfusionDef.cs" />
     <Compile Include="Infusions\InfusionLabelManager.cs" />
     <Compile Include="Infusions\InfusionSet.cs" />
@@ -59,9 +61,9 @@
     <Compile Include="Infusions\StatParts\StatPart_InfusionModifierTemperature.cs" />
     <Compile Include="Infusions\StatParts\StatPart_InfusionWorker.cs" />
     <Compile Include="Infusions\StatParts\StatPart_InfusionWorkerTemperature.cs" />
-    <Compile Include="Infusions\ThingClasses\ApparelWithInfusions.cs" />
-    <Compile Include="Infusions\ThingClasses\ThingWithInfusions.cs" />
     <Compile Include="Infusions\UI\ITab_Infusion.cs" />
+    <Compile Include="ICommon\ModInitializers\ModDetour.cs" />
+    <Compile Include="ICommon\ModInitializers\ModInjector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

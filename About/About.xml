@@ -3,9 +3,11 @@
 	<name>Infused</name>
 	<author>Latta &amp; NotFood</author>
         <url>https://ludeon.com/forums/index.php?topic=21884.0</url>
-	<targetVersion>0.14.1238</targetVersion>
-	<description>Randomly enchants items.
+	<targetVersion>0.14.1220</targetVersion>
+	<description>v0.14.1.0
 
-[Version 0.14.0.3]
+Equipment enchantment
+
+Requires Community Core Library.
 </description>
 </ModMetaData>

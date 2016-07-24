@@ -16,128 +16,74 @@ namespace Infused
 			get { return new InfusionSet (prefix, suffix); }
 		}
 
-		//Did we tried to infuse this item?
-		public bool tried;
+		// Is our infusion newly created? Only for notifications.
+		private bool isNew;
 
 		private string prefix, suffix;
 
 		private static readonly SoundDef InfusionSound = SoundDef.Named( "Infusion_Infused" );
 
-		public void SetInfusion( bool shouldThrowMote = false )
+		public void InitializeInfusionPrefix(QualityCategory qc, TechLevel tech)
 		{
-			if ( tried )
-			{
-				return;
-			}
-			var compQuality = parent.GetComp< CompQuality >();
-			if ( compQuality == null )
-			{
-				tried = true;
-				return;
+			var tierMult = tech < TechLevel.Industrial ? 3 : 1;
+
+			InfusionDef preTemp;
+			var tier = GenInfusion.GetTier (qc, tierMult);
+			if (
+				!(
+				    from t in DefDatabase< InfusionDef >.AllDefsListForReading
+				 where
+				     t.tier == tier &&
+				     t.type == InfusionType.Prefix &&
+				     t.MatchItemType (parent.def)
+				 select t
+				).TryRandomElement (out preTemp)) {
+				//No infusion available from defs
+				Log.Warning ("Infused: Couldn't find any prefixed InfusionDef! Tier: " + tier);
+				prefix = null;
+			} else {
+				prefix = preTemp.defName;
 			}
 
-			GenerateInfusion( compQuality.Quality, shouldThrowMote );
-			tried = true;
+			isNew = true;
+		}
+		public void InitializeInfusionSuffix(QualityCategory qc, TechLevel tech)
+		{
+			var tierMult = tech < TechLevel.Industrial ? 3 : 1;
+
+			InfusionDef preTemp;
+			var tier = GenInfusion.GetTier( qc, tierMult );
+			if ( !
+				(from t in DefDatabase< InfusionDef >.AllDefs.ToList()
+				 where
+					 t.tier == tier &&
+					 t.type == InfusionType.Suffix &&
+					 t.MatchItemType( parent.def )
+				 select t
+					).TryRandomElement( out preTemp ) )
+			{
+				//No infusion available from defs
+				Log.Warning( "Infused: Couldn't find any suffixed InfusionDef! Tier: " + tier );
+				suffix = null;
+			}
+			else
+			{
+				suffix = preTemp.defName;
+			}
+
+			isNew = true;
 		}
 
-		private void GenerateInfusion( QualityCategory qc, bool shouldThrowMote )
+		private void throwMote()
 		{
-			prefix = null;
-			suffix = null;
-
-			var passPre = true;
-			var passSuf = true;
-			var lowTech = parent.def.techLevel < TechLevel.Industrial;
-
-			var chance = GenInfusion.GetInfusionChance( qc );
-			var rand = Rand.Value;
-			if ( lowTech )
-			{
-				rand /= 3;
-			}
-			if ( rand <= chance )
-			{
-				passPre = false;
-			}
-
-			chance = GenInfusion.GetInfusionChance( qc );
-			rand = Rand.Value;
-			if ( lowTech )
-			{
-				rand /= 3;
-			}
-			if ( rand <= chance )
-			{
-				passSuf = false;
-			}
-
-			if ( passPre && passSuf )
-			{
-				//None has made this far
+			CompQuality compQuality = parent.TryGetComp<CompQuality> ();
+			if (compQuality == null) {
 				return;
 			}
-
-			var tierMult = lowTech ? 3 : 1;
-
-			if ( !passPre )
-			{
-				InfusionDef preTemp;
-				var tier = GenInfusion.GetTier( qc, tierMult );
-				if (
-					!(
-						from t in DefDatabase< InfusionDef >.AllDefsListForReading
-						where
-							t.tier == tier &&
-							t.type == InfusionType.Prefix &&
-							t.MatchItemType( parent.def )
-						select t
-						).TryRandomElement( out preTemp ) )
-				{
-					//No infusion available from defs
-					Log.Warning( "Infused: Couldn't find any prefixed InfusionDef! Tier: " + tier );
-					shouldThrowMote = false;
-					prefix = null;
-				}
-				else
-				{
-					prefix = preTemp.defName;
-				}
-			}
-
-			if ( !passSuf )
-			{
-				InfusionDef preTemp;
-				var tier = GenInfusion.GetTier( qc, tierMult );
-				if ( !
-					(from t in DefDatabase< InfusionDef >.AllDefs.ToList()
-					 where
-						 t.tier == tier &&
-						 t.type == InfusionType.Suffix &&
-						 t.MatchItemType( parent.def )
-					 select t
-						).TryRandomElement( out preTemp ) )
-				{
-					//No infusion available from defs
-					Log.Warning( "Infused: Couldn't find any suffixed InfusionDef! Tier: " + tier );
-					shouldThrowMote = false;
-					suffix = null;
-				}
-				else
-				{
-					suffix = preTemp.defName;
-				}
-			}
-
-			//For additional hit points
-			parent.HitPoints = parent.MaxHitPoints;
-
-			if ( !shouldThrowMote )
-			{
-				return;
-			}
+			string qualityLabel = compQuality.Quality.GetLabel();
 
 			var msg = new StringBuilder();
-			msg.Append( qc.GetLabel() + " " );
+			msg.Append( qualityLabel + " " );
 			if ( parent.Stuff != null )
 			{
 				msg.Append( parent.Stuff.LabelAsStuff + " " );
@@ -147,15 +93,20 @@ namespace Infused
 			InfusionSound.PlayOneShotOnCamera();
 			MoteThrower.ThrowText( parent.Position.ToVector3Shifted(), ResourceBank.StringInfused,
 			                       GenInfusionColor.Legendary );
+
+			isNew = false;
 		}
 
 		public override void PostSpawnSetup()
 		{
 			base.PostSpawnSetup();
-			SetInfusion( true );
-			if ( Infused )
-			{
-				InfusionLabelManager.Register( this );
+
+			if (Infused) {
+				InfusionLabelManager.Register (this);
+
+				// We only throw notifications for newly spawned items.
+				if (isNew)
+					throwMote ();
 			}
 		}
 
@@ -163,17 +114,16 @@ namespace Infused
 		{
 			base.PostExposeData();
 
-			Scribe_Values.LookValue( ref tried, "tried", false );
 			Scribe_Values.LookValue( ref prefix, "prefix", null );
 			Scribe_Values.LookValue( ref suffix, "suffix", null );
 
+#if DEBUG
 			if ( (prefix != null && prefix.ToInfusionDef() == null) || (suffix != null && suffix.ToInfusionDef() == null) )
 			{
-#if DEBUG
+
 				Log.Warning( "Infused: Could not find some of InfusionDef." + prefix + "/" + suffix );
-#endif
-				tried = false;
 			}
+#endif
 		}
 
 		public override void PostDeSpawn()
@@ -194,6 +144,18 @@ namespace Infused
 		public override string GetDescriptionPart()
 		{
 			return base.GetDescriptionPart() + "\n" + parent.GetInfusionDesc();
+		}
+
+		public override string TransformLabel (string label)
+		{
+			// When this function is called, our infusion is no longer new.
+			isNew = false;
+
+			if (Infused) {
+				return parent.GetInfusedLabel ();
+			} else {
+				return base.TransformLabel (label);
+			}
 		}
 	}
 }
