@@ -34,33 +34,25 @@ namespace Infused
 		//Inject every prerequisites to defs.
 		private void InjectVarious()
 		{
-			//Access ThingDef database with each def's defName.
-			String fieldName = "defsByName";
-			FieldInfo field = typeof(DefDatabase< ThingDef >).GetField (fieldName, BindingFlags.NonPublic | BindingFlags.Static);
-			if (field == null)
-				throw new ArgumentOutOfRangeException("fieldName", string.Format("Field {0} was not found in Type {1}", fieldName, typeof(DefDatabase< ThingDef >).FullName));
-			var defsByName = field.GetValue( null ) as Dictionary< string, ThingDef >;
-			if ( defsByName == null )
-				throw new Exception( "Could not access private members" );
-			foreach (var current in defsByName.Values.Where(current => current.IsMeleeWeapon || current.IsRangedWeapon || current.IsApparel)) 
+			foreach (var thingDef in DefDatabase< ThingDef >.AllDefs.Where ( def => def.IsMeleeWeapon || def.IsRangedWeapon || def.IsApparel )) 
 			{
-				if ( AddCompInfusion( current ) )
+				if ( AddCompInfusion( thingDef ) )
 				{
-					AddInfusionITab( current );
+					AddInfusionITab( thingDef );
 				}
 			}
 		}
 
 		//Inject new ThingComp.
-		private static bool AddCompInfusion( ThingDef def )
+		private static bool AddCompInfusion( ThingDef thingDef )
 		{
-			if ( def.comps.Exists( s => s.compClass == typeof ( CompInfusion ) ) )
+			if ( thingDef.comps.Exists( s => s.compClass == typeof ( CompInfusion ) ) )
 			{
-				Log.Message ("Infused: Component exists for " + def.label);
+				Log.Message ("Infused: Component exists for " + thingDef.label);
 				return false;
 			}
 
-			if ( !def.comps.Exists( s => s.compClass == typeof ( CompQuality ) ) )
+			if ( !thingDef.comps.Exists( s => s.compClass == typeof ( CompQuality ) ) )
 			{
 				return false;
 			}
@@ -68,7 +60,7 @@ namespace Infused
 			//As we are adding, not replacing, we need a fresh CompProperties.
 			//We don't need anything except compClass as CompInfusion does not take anything.
 			var compProperties = new CompProperties {compClass = typeof ( CompInfusion )};
-			def.comps.Insert( 0, compProperties );
+			thingDef.comps.Insert( 0, compProperties );
 #if DEBUG
 			Log.Message ("Infused: Component added to " + def.label);
 #endif
@@ -76,20 +68,20 @@ namespace Infused
 		}
 
 		//Inject new ITab to given def.
-		private static void AddInfusionITab( ThingDef def )
+		private static void AddInfusionITab( ThingDef thingDef )
 		{
-			if ( def.inspectorTabs == null || def.inspectorTabs.Count == 0 )
+			if ( thingDef.inspectorTabs == null || thingDef.inspectorTabs.Count == 0 )
 			{
-				def.inspectorTabs = new List< Type >();
-				def.inspectorTabsResolved = new List< ITab >();
+				thingDef.inspectorTabs = new List< Type >();
+				thingDef.inspectorTabsResolved = new List< ITab >();
 			}
-			if ( def.inspectorTabs.Contains( typeof ( ITab_Infusion ) ) )
+			if ( thingDef.inspectorTabs.Contains( typeof ( ITab_Infusion ) ) )
 			{
-				Log.Message ("Infused: Tab exists for " + def.label);
+				Log.Message ("Infused: Tab exists for " + thingDef.label);
 				return;
 			}
-			def.inspectorTabs.Add( typeof ( ITab_Infusion ) );
-			def.inspectorTabsResolved.Add( ITabManager.GetSharedInstance( typeof ( ITab_Infusion ) ) );
+			thingDef.inspectorTabs.Add( typeof ( ITab_Infusion ) );
+			thingDef.inspectorTabsResolved.Add( ITabManager.GetSharedInstance( typeof ( ITab_Infusion ) ) );
 		}
 	}
 }

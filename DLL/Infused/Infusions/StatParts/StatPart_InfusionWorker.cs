@@ -36,8 +36,8 @@ namespace Infused
 						Log.ErrorOnce( "Infused: Could not find notifier's StatDef, which is " + notifier, 3388123 );
                         return;
                     }
-                    var prefix = inf.Prefix.ToInfusionDef();
-                    var suffix = inf.Suffix.ToInfusionDef();
+                    var prefix = inf.Prefix;
+                    var suffix = inf.Suffix;
 
                     if (!inf.PassPre && prefix.GetStatValue( stat, out mod ))
                     {
@@ -69,8 +69,8 @@ namespace Infused
 						Log.ErrorOnce( "Infused: Could not find notifier's StatDef, which is " + notifier, 3388123 );
                         continue;
                     }
-                    var prefix = inf.Prefix.ToInfusionDef();
-                    var suffix = inf.Suffix.ToInfusionDef();
+                    var prefix = inf.Prefix;
+                    var suffix = inf.Suffix;
 
                     if (!inf.PassPre && prefix.GetStatValue( stat, out mod ))
                     {

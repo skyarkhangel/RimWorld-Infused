@@ -32,8 +32,8 @@ namespace Infused
             foreach (var current in InfusionLabelManager.Drawee)
             {
                 var inf = current.Infusions;
-                var prefix = inf.Prefix.ToInfusionDef();
-                var suffix = inf.Suffix.ToInfusionDef();
+                var prefix = inf.Prefix;
+                var suffix = inf.Suffix;
 
                 Color color;
                 //When there is only suffix

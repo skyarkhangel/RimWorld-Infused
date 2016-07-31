@@ -110,7 +110,7 @@ namespace Infused
 
             if ( !inf.PassPre )
             {
-                result.Append( inf.Prefix.ToInfusionDef().label + " " );
+                result.Append( inf.Prefix.label + " " );
             }
 
             string thingLabel;
@@ -124,7 +124,7 @@ namespace Infused
             }
 
             result.Append( !inf.PassSuf
-                ? ResourceBank.StringInfusionOf.Translate( thingLabel, inf.Suffix.ToInfusionDef().label.CapitalizeFirst() )
+                ? ResourceBank.StringInfusionOf.Translate( thingLabel, inf.Suffix.label.CapitalizeFirst() )
                 : thingLabel );
 
             if ( !isDetailed )
@@ -160,7 +160,7 @@ namespace Infused
             var result = new StringBuilder( null );
             if ( !inf.PassPre )
             {
-                var prefix = inf.Prefix.ToInfusionDef();
+                var prefix = inf.Prefix;
 	            result.Append( ResourceBank.StringInfusionDescFrom.Translate( prefix.LabelCap ) )
 	                  .Append( " (" )
 	                  .Append( prefix.tier.Translate() )
@@ -208,7 +208,7 @@ namespace Infused
                 return result.ToString();
             }
 
-            var suffix = inf.Suffix.ToInfusionDef();
+            var suffix = inf.Suffix;
 			result.Append(ResourceBank.StringInfusionDescFrom.Translate(suffix.LabelCap))
 				  .Append(" (")
 				  .Append(suffix.tier.Translate())

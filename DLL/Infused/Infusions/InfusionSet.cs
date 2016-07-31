@@ -11,8 +11,8 @@ namespace Infused
 			return string.Equals(Prefix, other.Prefix) && string.Equals(Suffix, other.Suffix);
 		}
 
-		public string Prefix;
-		public string Suffix;
+		public InfusionDef Prefix;
+		public InfusionDef Suffix;
 
 		public bool PassPre {
 			get {return Prefix == null; }
@@ -21,7 +21,7 @@ namespace Infused
 			get {return Suffix == null; }
 		}
 
-		public InfusionSet(string pre, string suf)
+		public InfusionSet(InfusionDef pre, InfusionDef suf)
 		{
 			Prefix = pre;
 			Suffix = suf;

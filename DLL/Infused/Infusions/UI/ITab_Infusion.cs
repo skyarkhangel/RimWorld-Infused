@@ -73,8 +73,8 @@ namespace Infused
         private static string GetRectLabel()
         {
             var infs = SelectedCompInfusion.Infusions;
-            var preDef = infs.Prefix.ToInfusionDef();
-            var sufDef = infs.Suffix.ToInfusionDef();
+            var preDef = infs.Prefix;
+            var sufDef = infs.Suffix;
 
             var result = new StringBuilder();
             if ( !infs.PassPre )

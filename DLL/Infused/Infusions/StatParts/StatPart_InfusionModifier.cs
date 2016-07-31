@@ -37,8 +37,8 @@ namespace Infused
             }
             //"Notifier" will notify below lines about the actual StatDef it is adjusting, via XML-written notifier string.
             //InfusionSet is also string-based, so we have to find the InfusionDef behind it.
-            var prefix = inf.Prefix.ToInfusionDef();
-            var suffix = inf.Suffix.ToInfusionDef();
+            var prefix = inf.Prefix;
+            var suffix = inf.Suffix;
             //Return if the worker has no stat specified
             if ( !inf.PassPre && prefix.GetStatValue( stat, out mod ) )
             {
@@ -73,11 +73,11 @@ namespace Infused
 
             if ( !infusions.PassPre )
             {
-                result.Append( WriteExplanationDetail( thing, infusions.Prefix ) );
+                result.Append( WriteExplanationDetail( thing, infusions.Prefix.defName ) );
             }
             if ( !infusions.PassSuf )
             {
-                result.Append( WriteExplanationDetail( thing, infusions.Suffix ) );
+				result.Append( WriteExplanationDetail( thing, infusions.Suffix.defName ) );
             }
             return result.ToString();
         }

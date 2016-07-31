@@ -8,20 +8,21 @@ namespace Infused
 {
 	public class CompInfusion : ThingComp
 	{
-		public bool Infused {
-			get { return prefix != null || suffix != null; }
-		}
+		private static readonly SoundDef InfusionSound = SoundDef.Named( "Infusion_Infused" );
+
+		// Is our infusion newly created? Only for notifications.
+		private bool isNew;
+
+		private string prefixDefName, suffixDefName;
+		private InfusionDef prefix, suffix;
 
 		public InfusionSet Infusions {
 			get { return new InfusionSet (prefix, suffix); }
 		}
 
-		// Is our infusion newly created? Only for notifications.
-		private bool isNew;
-
-		private string prefix, suffix;
-
-		private static readonly SoundDef InfusionSound = SoundDef.Named( "Infusion_Infused" );
+		public bool Infused {
+			get { return prefix != null || suffix != null; }
+		}
 
 		public void InitializeInfusionPrefix(QualityCategory qc, TechLevel tech)
 		{
@@ -42,7 +43,7 @@ namespace Infused
 				Log.Warning ("Infused: Couldn't find any prefixed InfusionDef! Tier: " + tier);
 				prefix = null;
 			} else {
-				prefix = preTemp.defName;
+				prefix = preTemp.defName.ToInfusionDef();
 			}
 
 			isNew = true;
@@ -68,7 +69,7 @@ namespace Infused
 			}
 			else
 			{
-				suffix = preTemp.defName;
+				suffix = preTemp.defName.ToInfusionDef();
 			}
 
 			isNew = true;
@@ -114,8 +115,19 @@ namespace Infused
 		{
 			base.PostExposeData();
 
-			Scribe_Values.LookValue( ref prefix, "prefix", null );
-			Scribe_Values.LookValue( ref suffix, "suffix", null );
+			// This is ugly, I need a better solution.
+			if (prefix != null)
+				prefixDefName = prefix.defName;
+			if (suffix != null)
+				suffixDefName = suffix.defName;
+
+			Scribe_Values.LookValue (ref prefixDefName, "prefix", null);
+			Scribe_Values.LookValue (ref suffixDefName, "suffix", null);
+
+			if (prefix == null)
+				prefix = prefixDefName.ToInfusionDef ();
+			if (suffix == null)
+				suffix = suffixDefName.ToInfusionDef ();
 
 #if DEBUG
 			if ( (prefix != null && prefix.ToInfusionDef() == null) || (suffix != null && suffix.ToInfusionDef() == null) )
