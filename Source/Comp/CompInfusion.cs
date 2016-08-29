@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
+
 using RimWorld;
 using Verse;
 using Verse.Sound;
@@ -14,7 +16,7 @@ namespace Infused
 		private bool isNew;
 
 		private string prefixDefName, suffixDefName;
-		private InfusionDef prefix, suffix;
+		private Def prefix, suffix;
 
 		public InfusionSet Infusions {
 			get { return new InfusionSet (prefix, suffix); }
@@ -24,52 +26,27 @@ namespace Infused
 			get { return prefix != null || suffix != null; }
 		}
 
-		public void InitializeInfusionPrefix(QualityCategory qc, TechLevel tech)
+		public void InitializeInfusionPrefix(InfusionTier tier)
 		{
-			var tierMult = tech < TechLevel.Industrial ? 3 : 1;
-
-			InfusionDef preTemp;
-			var tier = GenInfusion.GetTier (qc, tierMult);
-			if (
-				!(
-				    from t in DefDatabase< InfusionDef >.AllDefsListForReading
-				 where
-				     t.tier == tier &&
-				     t.type == InfusionType.Prefix &&
-				     t.MatchItemType (parent.def)
-				 select t
-				).TryRandomElement (out preTemp)) {
-				//No infusion available from defs
-				Log.Warning ("Infused: Couldn't find any prefixed InfusionDef! Tier: " + tier);
-				prefix = null;
-			} else {
-				prefix = preTemp.defName.ToInfusionDef();
-			}
-
-			isNew = true;
+			InitializeInfusion (InfusionType.Prefix, tier, out prefix);
 		}
-		public void InitializeInfusionSuffix(QualityCategory qc, TechLevel tech)
+		public void InitializeInfusionSuffix(InfusionTier tier)
 		{
-			var tierMult = tech < TechLevel.Industrial ? 3 : 1;
+			InitializeInfusion (InfusionType.Suffix, tier, out suffix);
+		}
 
-			InfusionDef preTemp;
-			var tier = GenInfusion.GetTier( qc, tierMult );
+		public void InitializeInfusion(InfusionType type, InfusionTier tier, out Def infusion)  {
 			if ( !
-				(from t in DefDatabase< InfusionDef >.AllDefs.ToList()
-				 where
-					 t.tier == tier &&
-					 t.type == InfusionType.Suffix &&
-					 t.MatchItemType( parent.def )
-				 select t
-					).TryRandomElement( out preTemp ) )
+				(from t in DefDatabase< Def >.AllDefs
+					where
+					t.tier == tier &&
+					t.type == type &&
+					t.MatchItemType( parent.def )
+					select t
+				).TryRandomElement( out infusion ) )
 			{
 				//No infusion available from defs
-				Log.Warning( "Infused: Couldn't find any suffixed InfusionDef! Tier: " + tier );
-				suffix = null;
-			}
-			else
-			{
-				suffix = preTemp.defName.ToInfusionDef();
+				Log.Warning( "Infused :: Couldn't find any " + type + "InfusionDef! Tier: " + tier );
 			}
 
 			isNew = true;
@@ -92,7 +69,8 @@ namespace Infused
 			msg.Append( parent.def.label );
 			Messages.Message( ResourceBank.StringInfusionMessage.Translate( msg ), MessageSound.Silent );
 			InfusionSound.PlayOneShotOnCamera();
-			MoteThrower.ThrowText( parent.Position.ToVector3Shifted(), ResourceBank.StringInfused,
+
+			MoteMaker.ThrowText( parent.Position.ToVector3Shifted(), ResourceBank.StringInfused,
 			                       GenInfusionColor.Legendary );
 
 			isNew = false;
@@ -125,15 +103,15 @@ namespace Infused
 			Scribe_Values.LookValue (ref suffixDefName, "suffix", null);
 
 			if (prefix == null)
-				prefix = prefixDefName.ToInfusionDef ();
+				prefix = Def.Named(prefixDefName);
 			if (suffix == null)
-				suffix = suffixDefName.ToInfusionDef ();
+				suffix = Def.Named(suffixDefName);
 
 #if DEBUG
-			if ( (prefix != null && prefix.ToInfusionDef() == null) || (suffix != null && suffix.ToInfusionDef() == null) )
+			if ( (prefixDefName != null && prefix == null) || (suffixDefName != null && suffix == null) )
 			{
 
-				Log.Warning( "Infused: Could not find some of InfusionDef." + prefix + "/" + suffix );
+				Log.Warning( "Infused :: Could not find some of InfusionDef." + prefix + "/" + suffix );
 			}
 #endif
 		}

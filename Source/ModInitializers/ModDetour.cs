@@ -29,15 +29,18 @@ namespace Infused
 			// Can we be infused?
 			CompInfusion compInfusion = comp.parent.TryGetComp<CompInfusion> ();
 			if (compInfusion != null) {
+				var thing = comp.parent;
 				var def = comp.parent.def;
 				// Get those Infusions rolling
-				var prefix = roll (qc, def.techLevel);
-				var suffix = roll (qc, def.techLevel);
+				var prefix = roll (thing, qc);
+				var suffix = roll (thing, qc);
+
+				var tierMult = def.techLevel < TechLevel.Industrial ? 3 : 1;
 
 				if (prefix)
-					compInfusion.InitializeInfusionPrefix (qc, def.techLevel);
+					compInfusion.InitializeInfusionPrefix (GenInfusion.GetTier( qc, tierMult ));
 				if (suffix)
-					compInfusion.InitializeInfusionSuffix (qc, def.techLevel);
+					compInfusion.InitializeInfusionSuffix (GenInfusion.GetTier( qc, tierMult ));
 				if (prefix || suffix) {
 					//For additional hit points
 					comp.parent.HitPoints = comp.parent.MaxHitPoints;
@@ -48,18 +51,12 @@ namespace Infused
 		#endregion
 
 		//Rolling for chance TODO: make it configurable
-		private static bool roll(QualityCategory qc, TechLevel tech)
+		private static bool roll(Thing thing, QualityCategory qc)
 		{
-			var lowTech = tech < TechLevel.Industrial;
-
-			var chance = GenInfusion.GetInfusionChance( qc );
+			var chance = GenInfusion.GetInfusionChance( thing, qc );
 			var rand = Rand.Value;
-			if ( lowTech )
-			{
-				rand /= 3;
-			}
 #if DEBUG
-			Log.Message ("Infused: Rolled " + ((rand < chance) ? "success" : "failure") + " " + rand + " < " + chance + " for " + qc +  " under " + tech);
+			Log.Message ("Infused :: Rolled " + ((rand < chance) ? "success" : "failure") + " " + rand + " < " + chance + " for " + thing + " and " + qc);
 #endif
 			return rand < chance;
 		}

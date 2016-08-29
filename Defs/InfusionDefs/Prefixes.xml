@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-  <Infused.InfusionDef Abstract="True" Name="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixBase">
     <label>undefined Infusion</label>
     <labelShort>#NN</labelShort>
     <type>Prefix</type>
     <tier>Uncommon</tier>
-  </Infused.InfusionDef>
+  </Infused.Def>
   <!-- Tier 0 -->
-  <Infused.InfusionDef Abstract="True" Name="PrefixCommon" ParentName="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixCommon" ParentName="PrefixBase">
     <tier>Common</tier>
     <stats>
       <li>
@@ -17,8 +17,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Light</defName>
     <label>light</label>
     <labelShort>lite</labelShort>
@@ -36,8 +36,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>LightApparel</defName>
     <label>light</label>
     <labelShort>lite</labelShort>
@@ -54,8 +54,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Heavy</defName>
     <label>heavy</label>
     <labelShort>hvy</labelShort>
@@ -70,8 +70,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>HeavyRange</defName>
     <label>heavy</label>
     <labelShort>hvy</labelShort>
@@ -86,8 +86,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Small</defName>
     <label>small</label>
     <labelShort>smll</labelShort>
@@ -99,8 +99,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Big</defName>
     <label>big</label>
     <labelShort>big</labelShort>
@@ -112,8 +112,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Long</defName>
     <label>long</label>
     <labelShort>long</labelShort>
@@ -154,8 +154,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Thick</defName>
     <label>thick</label>
     <labelShort>thck</labelShort>
@@ -172,8 +172,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixCommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixCommon">
     <defName>Tough</defName>
     <label>thick</label>
     <labelShort>thgh</labelShort>
@@ -190,9 +190,9 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
+  </Infused.Def>
   <!-- Tier 1 -->
-  <Infused.InfusionDef Abstract="True" Name="PrefixUncommon" ParentName="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixUncommon" ParentName="PrefixBase">
     <stats>
       <li>
         <key>MaxHitPoints</key>
@@ -207,8 +207,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Studded</defName>
     <label>sturdy</label>
     <labelShort>stdy</labelShort>
@@ -231,8 +231,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Fast</defName>
     <label>fast</label>
     <labelShort>fast</labelShort>
@@ -256,8 +256,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Careful</defName>
     <label>careful</label>
     <labelShort>crfl</labelShort>
@@ -278,8 +278,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>CarefulRange</defName>
     <label>careful</label>
     <labelShort>crfl</labelShort>
@@ -318,8 +318,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Attractive</defName>
     <label>attractive</label>
     <labelShort>attr</labelShort>
@@ -334,8 +334,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Hard</defName>
     <label>hard</label>
     <labelShort>hard</labelShort>
@@ -352,8 +352,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Soft</defName>
     <label>soft</label>
     <labelShort>soft</labelShort>
@@ -370,8 +370,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Mercenary</defName>
     <label>mercenary</label>
     <labelShort>merc</labelShort>
@@ -392,8 +392,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>MercenaryRange</defName>
     <label>mercenary</label>
     <labelShort>merc</labelShort>
@@ -414,8 +414,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Spiked</defName>
     <label>spiked</label>
     <labelShort>spk</labelShort>
@@ -431,8 +431,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>SawedOff</defName>
     <label>sawed off</label>
     <labelShort>saw</labelShort>
@@ -465,8 +465,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Warm</defName>
     <label>warm</label>
     <labelShort>warm</labelShort>
@@ -481,8 +481,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixUncommon">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixUncommon">
     <defName>Breezing</defName>
     <label>breezing</label>
     <labelShort>brz</labelShort>
@@ -497,9 +497,9 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
+  </Infused.Def>
   <!-- Tier 2 !-->
-  <Infused.InfusionDef Abstract="True" Name="PrefixRare" ParentName="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixRare" ParentName="PrefixBase">
     <tier>Rare</tier>
     <stats>
       <li>
@@ -515,8 +515,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Charming</defName>
     <label>charming</label>
     <labelShort>chrm</labelShort>
@@ -531,8 +531,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Siege</defName>
     <label>siege</label>
     <labelShort>sige</labelShort>
@@ -571,8 +571,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Precise</defName>
     <label>precise</label>
     <labelShort>prcs</labelShort>
@@ -613,8 +613,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Clean</defName>
     <label>clean</label>
     <labelShort>cln</labelShort>
@@ -642,8 +642,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Assaulting</defName>
     <label>assaulting</label>
     <labelShort>aslt</labelShort>
@@ -670,8 +670,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>AssaultingRange</defName>
     <label>assaulting</label>
     <labelShort>aslt</labelShort>
@@ -716,8 +716,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Healing</defName>
     <label>healing</label>
     <labelShort>heal</labelShort>
@@ -739,8 +739,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Weaving</defName>
     <label>weaving</label>
     <labelShort>weav</labelShort>
@@ -756,8 +756,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Hunting</defName>
     <label>hunting</label>
     <labelShort>hunt</labelShort>
@@ -796,8 +796,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Cooking</defName>
     <label>cooking</label>
     <labelShort>cook</labelShort>
@@ -825,8 +825,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Mining</defName>
     <label>mining</label>
     <labelShort>mine</labelShort>
@@ -847,8 +847,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Establishing</defName>
     <label>establishing</label>
     <labelShort>estb</labelShort>
@@ -869,8 +869,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Farming</defName>
     <label>farming</label>
     <labelShort>farm</labelShort>
@@ -892,8 +892,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Stonevein</defName>
     <label>stonevein</label>
     <labelShort>stne</labelShort>
@@ -914,8 +914,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Metalvein</defName>
     <label>metalvein</label>
     <labelShort>mtal</labelShort>
@@ -936,8 +936,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Taming</defName>
     <label>taming</label>
     <labelShort>tame</labelShort>
@@ -958,8 +958,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Professional</defName>
     <label>professional</label>
     <labelShort>prof</labelShort>
@@ -974,8 +974,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Unholy</defName>
     <label>unholy</label>
     <labelShort>uhly</labelShort>
@@ -997,8 +997,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>UnholyRange</defName>
     <label>unholy</label>
     <labelShort>uhly</labelShort>
@@ -1019,8 +1019,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Blocking</defName>
     <label>blocking</label>
     <labelShort>blck</labelShort>
@@ -1037,8 +1037,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Protecting</defName>
     <label>protecting</label>
     <labelShort>prtc</labelShort>
@@ -1055,8 +1055,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Swerving</defName>
     <label>swerving</label>
     <labelShort>swrv</labelShort>
@@ -1079,8 +1079,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Heating</defName>
     <label>heating</label>
     <labelShort>heat</labelShort>
@@ -1101,8 +1101,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Chilling</defName>
     <label>chilling</label>
     <labelShort>chil</labelShort>
@@ -1123,8 +1123,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Coated</defName>
     <label>coated</label>
     <labelShort>coat</labelShort>
@@ -1141,9 +1141,9 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
+  </Infused.Def>
   <!-- Tier 3 !-->
-  <Infused.InfusionDef Abstract="True" Name="PrefixEpic" ParentName="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixEpic" ParentName="PrefixBase">
     <tier>Epic</tier>
     <stats>
       <li>
@@ -1159,8 +1159,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Homing</defName>
     <label>homing</label>
     <labelShort>hmg</labelShort>
@@ -1181,8 +1181,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>HomingRange</defName>
     <label>homing</label>
     <labelShort>hmg</labelShort>
@@ -1221,8 +1221,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Swift</defName>
     <label>swift</label>
     <labelShort>swft</labelShort>
@@ -1240,8 +1240,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>SwiftApparel</defName>
     <label>swift</label>
     <labelShort>swft</labelShort>
@@ -1258,8 +1258,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Ancient</defName>
     <label>ancient</label>
     <labelShort>anci</labelShort>
@@ -1286,8 +1286,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>AncientRange</defName>
     <label>ancient</label>
     <labelShort>anci</labelShort>
@@ -1314,8 +1314,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>AncientApparel</defName>
     <label>ancient</label>
     <labelShort>anci</labelShort>
@@ -1350,8 +1350,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Controlling</defName>
     <label>controlling</label>
     <labelShort>ctrl</labelShort>
@@ -1367,8 +1367,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Fel</defName>
     <label>fel</label>
     <labelShort>fel</labelShort>
@@ -1390,8 +1390,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>FelRange</defName>
     <label>fel</label>
     <labelShort>fel</labelShort>
@@ -1412,8 +1412,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Communicating</defName>
     <label>communicating</label>
     <labelShort>comm</labelShort>
@@ -1434,8 +1434,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Absorbing</defName>
     <label>absorbing</label>
     <labelShort>absb</labelShort>
@@ -1458,8 +1458,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Burning</defName>
     <label>burning</label>
     <labelShort>burn</labelShort>
@@ -1480,8 +1480,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Freezing</defName>
     <label>freezing</label>
     <labelShort>frez</labelShort>
@@ -1502,8 +1502,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixEpic">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixEpic">
     <defName>Modulating</defName>
     <label>modulating</label>
     <labelShort>mdul</labelShort>
@@ -1520,9 +1520,9 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
+  </Infused.Def>
   <!-- Tier 4 !-->
-  <Infused.InfusionDef Abstract="True" Name="PrefixLegendary" ParentName="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixLegendary" ParentName="PrefixBase">
     <tier>Legendary</tier>
     <stats>
       <li>
@@ -1538,8 +1538,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Destructive</defName>
     <label>destructive</label>
     <labelShort>dest</labelShort>
@@ -1555,8 +1555,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Amplified</defName>
     <label>amplified</label>
     <labelShort>amp</labelShort>
@@ -1571,8 +1571,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Scribing</defName>
     <label>scribing</label>
     <labelShort>scrb</labelShort>
@@ -1601,8 +1601,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Everprotecting</defName>
     <label>everprotecting</label>
     <labelShort>evep</labelShort>
@@ -1625,8 +1625,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Deflecting</defName>
     <label>deflecting</label>
     <labelShort>defl</labelShort>
@@ -1655,8 +1655,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Gravitational</defName>
     <label>gravitational</label>
     <labelShort>grav</labelShort>
@@ -1683,8 +1683,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixLegendary">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixLegendary">
     <defName>Fluctuating</defName>
     <label>fluctuating</label>
     <labelShort>fluc</labelShort>
@@ -1711,8 +1711,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Icy</defName>
     <label>icy</label>
     <labelShort>icy</labelShort>
@@ -1733,8 +1733,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Volcanic</defName>
     <label>volcanic</label>
     <labelShort>volc</labelShort>
@@ -1755,8 +1755,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixRare">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixRare">
     <defName>Influential</defName>
     <label>influential</label>
     <labelShort>infl</labelShort>
@@ -1777,9 +1777,9 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
+  </Infused.Def>
   <!-- Tier 5 !-->
-  <Infused.InfusionDef Abstract="True" Name="PrefixArtifact" ParentName="PrefixBase">
+  <Infused.Def Abstract="True" Name="PrefixArtifact" ParentName="PrefixBase">
     <tier>Artifact</tier>
     <stats>
       <li>
@@ -1795,8 +1795,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixArtifact">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixArtifact">
     <defName>Invulnerable</defName>
     <label>invulnerable</label>
     <labelShort>inv</labelShort>
@@ -1831,8 +1831,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixArtifact">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixArtifact">
     <defName>Flexing</defName>
     <label>flexing</label>
     <labelShort>flex</labelShort>
@@ -1866,8 +1866,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixArtifact">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixArtifact">
     <defName>Hypercharged</defName>
     <label>hypercharged</label>
     <labelShort>hype</labelShort>
@@ -1918,8 +1918,8 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
-  <Infused.InfusionDef ParentName="PrefixArtifact">
+  </Infused.Def>
+  <Infused.Def ParentName="PrefixArtifact">
     <defName>Lightwalk</defName>
     <label>lightwalk</label>
     <labelShort>lwlk</labelShort>
@@ -1934,5 +1934,5 @@
         </value>
       </li>
     </stats>
-  </Infused.InfusionDef>
+  </Infused.Def>
 </Defs>

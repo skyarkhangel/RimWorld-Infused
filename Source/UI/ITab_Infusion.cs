@@ -72,41 +72,26 @@ namespace Infused
 
         private static string GetRectLabel()
         {
-            var infs = SelectedCompInfusion.Infusions;
-            var preDef = infs.Prefix;
-            var sufDef = infs.Suffix;
-
-            var result = new StringBuilder();
-            if ( !infs.PassPre )
-            {
-                result.Append( preDef.LabelCap );
-                if ( !infs.PassSuf )
-                {
-                    result.Append( " " );
-                }
-            }
-
-            if ( !infs.PassSuf )
-            {
-                result.Append( sufDef.LabelCap );
-            }
+			var infusions = SelectedCompInfusion.Infusions;
+			var prefix = infusions.prefix;
+			var suffix = infusions.suffix;
 
             Color color;
-            if ( !infs.PassPre && infs.PassSuf )
+			if ( prefix != null && suffix == null )
             {
-                color = preDef.tier.InfusionColor();
+                color = prefix.tier.InfusionColor();
             }
-            else if ( !infs.PassSuf && infs.PassPre )
+			else if ( suffix != null && prefix == null )
             {
-                color = sufDef.tier.InfusionColor();
+                color = suffix.tier.InfusionColor();
             }
             else
             {
-                color = MathUtility.Max( preDef.tier, sufDef.tier ).InfusionColor();
+                color = MathUtility.Max( prefix.tier, suffix.tier ).InfusionColor();
             }
 
             GUI.color = color;
-            return result.ToString();
+			return SelectedCompInfusion.parent.GetInfusedLabel ().CapitalizeFirst();
         }
     }
 }

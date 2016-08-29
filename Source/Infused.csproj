@@ -33,31 +33,31 @@
     <Reference Include="System" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\Steam\steamapps\common\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\RimWorld1279Linux_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ICommon\ResourceBank.cs" />
-    <Compile Include="ICommon\StatMod.cs" />
-    <Compile Include="ICommon\Gens\GenInfusion.cs" />
-    <Compile Include="ICommon\Gens\GenInfusionColor.cs" />
-    <Compile Include="ICommon\Gens\MathUtility.cs" />
-    <Compile Include="ICommon\Gens\TextUtility.cs" />
-    <Compile Include="Infusions\InfusionDef.cs" />
-    <Compile Include="Infusions\InfusionLabelManager.cs" />
-    <Compile Include="Infusions\InfusionSet.cs" />
-    <Compile Include="Infusions\Comp\CompInfusion.cs" />
-    <Compile Include="Infusions\MapComponent\MapComponent_InfusionManager.cs" />
-    <Compile Include="Infusions\StatParts\StatPart_InfusionModifier.cs" />
-    <Compile Include="Infusions\StatParts\StatPart_InfusionModifierTemperature.cs" />
-    <Compile Include="Infusions\StatParts\StatPart_InfusionWorker.cs" />
-    <Compile Include="Infusions\StatParts\StatPart_InfusionWorkerTemperature.cs" />
-    <Compile Include="Infusions\UI\ITab_Infusion.cs" />
-    <Compile Include="ICommon\ModInitializers\ModDetour.cs" />
-    <Compile Include="ICommon\ModInitializers\ModInjector.cs" />
+    <Compile Include="Comp\CompInfusion.cs" />
+    <Compile Include="Gens\GenInfusion.cs" />
+    <Compile Include="Gens\GenInfusionColor.cs" />
+    <Compile Include="Gens\MathUtility.cs" />
+    <Compile Include="MapComponent\MapComponent_InfusionManager.cs" />
+    <Compile Include="ModInitializers\Detours.cs" />
+    <Compile Include="ModInitializers\ModDetour.cs" />
+    <Compile Include="ModInitializers\ModInjector.cs" />
+    <Compile Include="StatParts\StatPart_InfusionModifier.cs" />
+    <Compile Include="UI\ITab_Infusion.cs" />
+    <Compile Include="InfusionSet.cs" />
+    <Compile Include="ResourceBank.cs" />
+    <Compile Include="Defs\ChanceDef.cs" />
+    <Compile Include="Defs\Def.cs" />
+    <Compile Include="Gens\GenInfusionText.cs" />
+    <Compile Include="MapComponent\InfusionLabelManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -67,4 +67,13 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="Comp\" />
+    <Folder Include="Gens\" />
+    <Folder Include="MapComponent\" />
+    <Folder Include="ModInitializers\" />
+    <Folder Include="StatParts\" />
+    <Folder Include="UI\" />
+    <Folder Include="Defs\" />
+  </ItemGroup>
 </Project>

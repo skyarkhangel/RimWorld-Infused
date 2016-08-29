@@ -43,13 +43,13 @@ namespace Infused
                 InfusionSet inf;
                 if ( Thing != null && Thing.TryGetInfusions( out inf ) )
                 {
-                    if ( !inf.PassPre )
+					if ( inf.prefix != null )
                     {
-                        num2 ^= inf.Prefix.GetHashCode();
+                        num2 ^= inf.prefix.GetHashCode();
                     }
-                    if ( !inf.PassSuf )
+					if ( inf.suffix != null )
                     {
-                        num2 ^= inf.Suffix.GetHashCode();
+                        num2 ^= inf.suffix.GetHashCode();
                     }
                 }
 
@@ -103,28 +103,33 @@ namespace Infused
         //Make a new infused label.
         private static string NewInfusedThingLabel( Thing thing, bool isStuffed, bool isDetailed )
         {
-            var result = new StringBuilder();
+			string thingLabel;
+			if ( isStuffed && thing.Stuff != null )
+			{
+				thingLabel = thing.Stuff.LabelAsStuff + " " + thing.def.label;
+			}
+			else
+			{
+				thingLabel = thing.def.label;
+			}
+
+			var result = new StringBuilder();
 
             InfusionSet inf;
-            thing.TryGetInfusions( out inf );
+			if (!thing.TryGetInfusions (out inf)) {
+				return thingLabel;
+			}
 
-            if ( !inf.PassPre )
+			var prefix = inf.prefix;
+			var suffix = inf.suffix;
+
+			if ( prefix != null )
             {
-                result.Append( inf.Prefix.label + " " );
+                result.Append( prefix.label + " " );
             }
 
-            string thingLabel;
-            if ( isStuffed && thing.Stuff != null )
-            {
-                thingLabel = thing.Stuff.LabelAsStuff + " " + thing.def.label;
-            }
-            else
-            {
-                thingLabel = thing.def.label;
-            }
-
-            result.Append( !inf.PassSuf
-                ? ResourceBank.StringInfusionOf.Translate( thingLabel, inf.Suffix.label.CapitalizeFirst() )
+			result.Append( suffix != null
+                ? ResourceBank.StringInfusionOf.Translate( thingLabel, suffix.label.CapitalizeFirst() )
                 : thingLabel );
 
             if ( !isDetailed )
@@ -157,10 +162,12 @@ namespace Infused
                 return null;
             }
 
+			var prefix = inf.prefix;
+			var suffix = inf.suffix;
+
             var result = new StringBuilder( null );
-            if ( !inf.PassPre )
+			if ( prefix != null )
             {
-                var prefix = inf.Prefix;
 	            result.Append( ResourceBank.StringInfusionDescFrom.Translate( prefix.LabelCap ) )
 	                  .Append( " (" )
 	                  .Append( prefix.tier.Translate() )
@@ -183,14 +190,7 @@ namespace Infused
 					                StatPart_InfusionModifier;
 			                if ( modifier != null )
 			                {
-				                if ( modifier.offsetUsePercentage )
-				                {
-					                result.Append( current.Value.offset.ToAbs().ToStringPercent() );
-				                }
-				                else
-				                {
-					                result.Append( current.Value.offset.ToAbs() + modifier.offsetSuffix );
-				                }
+								result.Append( modifier.parentStat.ValueToString (current.Value.offset.ToAbs ()) );
 			                }
 		                }
 		                result.AppendLine( " " + current.Key.LabelCap );
@@ -203,12 +203,11 @@ namespace Infused
 				}
                 result.AppendLine();
             }
-            if ( inf.PassSuf )
+			if ( suffix == null )
             {
                 return result.ToString();
             }
 
-            var suffix = inf.Suffix;
 			result.Append(ResourceBank.StringInfusionDescFrom.Translate(suffix.LabelCap))
 				  .Append(" (")
 				  .Append(suffix.tier.Translate())
@@ -229,14 +228,7 @@ namespace Infused
                             current.Key.parts.Find( s => s is StatPart_InfusionModifier ) as StatPart_InfusionModifier;
                         if ( modifier != null )
                         {
-                            if ( modifier.offsetUsePercentage )
-                            {
-                                result.Append( current.Value.offset.ToAbs().ToStringPercent() );
-                            }
-                            else
-                            {
-                                result.Append( current.Value.offset.ToAbs() + modifier.offsetSuffix );
-                            }
+							result.Append( modifier.parentStat.ValueToString (current.Value.offset.ToAbs ()) );
                         }
                     }
                     result.AppendLine( " " + current.Key.LabelCap );

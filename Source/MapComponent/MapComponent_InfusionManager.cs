@@ -32,17 +32,17 @@ namespace Infused
             foreach (var current in InfusionLabelManager.Drawee)
             {
                 var inf = current.Infusions;
-                var prefix = inf.Prefix;
-                var suffix = inf.Suffix;
+                var prefix = inf.prefix;
+                var suffix = inf.suffix;
 
                 Color color;
                 //When there is only suffix
-                if (inf.PassPre)
+				if (suffix != null)
                 {
                     color = suffix.tier.InfusionColor();
                 }
                 //When there is only prefix
-                else if (inf.PassSuf)
+				else if (prefix != null)
                 {
                     color = prefix.tier.InfusionColor();
                 }
@@ -52,13 +52,13 @@ namespace Infused
                     color = MathUtility.Max(prefix.tier, suffix.tier).InfusionColor();
                 }
                 var result = new StringBuilder();
-                if (!inf.PassPre)
+				if (prefix != null)
                 {
                     result.Append(prefix.labelShort);
-                    if (!inf.PassSuf)
+					if (suffix != null)
                         result.Append(" ");
                 }
-                if (!inf.PassSuf)
+				if (suffix != null)
                     result.Append(suffix.labelShort);
 
                 GenWorldUI.DrawThingLabel(

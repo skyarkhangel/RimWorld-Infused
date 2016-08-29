@@ -1,44 +1,25 @@
-﻿using RimWorld;
+﻿using System;
+using System.Linq;
+
+using RimWorld;
 using Verse;
 
 namespace Infused
 {
 	public static class GenInfusion
 	{
-		public static float GetInfusionChance( QualityCategory qc )
-		{
-			float result;
-			switch ( qc )
-			{
-				case QualityCategory.Awful:
-				case QualityCategory.Shoddy:
-				case QualityCategory.Poor:
-					result = 0.05f;
-					break;
-				case QualityCategory.Normal:
-					result = 0.1f;
-					break;
-				case QualityCategory.Good:
-					result = 0.2f;
-					break;
-				case QualityCategory.Superior:
-					result = 0.33f;
-					break;
-				case QualityCategory.Excellent:
-					result = 0.45f;
-					break;
-				case QualityCategory.Masterwork:
-					result = 0.67f;
-					break;
-				case QualityCategory.Legendary:
-					result = 0.88f;
-					break;
-				default:
-					result = 0;
-					break;
+		public static float GetInfusionChance( Thing thing, QualityCategory qc ) {
+			var infunsionChanceDef = (
+				from chance in DefDatabase< ChanceDef >.AllDefs.Reverse()
+				where chance.Allows(thing)
+				select chance
+			).FirstOrDefault();
+
+			if (infunsionChanceDef == null) {
+				return 0f;
 			}
 
-			return result;
+			return infunsionChanceDef.Chance (qc);
 		}
 
 		public static InfusionTier GetTier( QualityCategory qc, float multiplier )
@@ -90,27 +71,6 @@ namespace Infused
 			return comp.Infused;
 		}
 
-		public static bool MatchItemType( this InfusionDef iDef, ThingDef tDef )
-		{
-			if ( tDef.IsMeleeWeapon )
-			{
-				return iDef.allowance.melee;
-			}
-			if ( tDef.IsRangedWeapon )
-			{
-				return iDef.allowance.ranged;
-			}
-			return tDef.IsApparel && iDef.allowance.apparel;
-		}
 
-		public static InfusionDef ToInfusionDef( this string defName )
-		{
-			return defName != null ? DefDatabase< InfusionDef >.GetNamed( defName ) : null;
-		}
-
-		public static StatDef ToStatDef( this string defName )
-		{
-			return defName != null ? DefDatabase< StatDef >.GetNamed( defName ) : null;
-		}
 	}
 }
