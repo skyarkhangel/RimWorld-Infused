@@ -31,6 +31,11 @@ namespace Infused
 
             foreach (var current in InfusionLabelManager.Drawee)
             {
+				// skip fogged
+				if (Find.FogGrid.IsFogged (current.parent.Position)) {
+					continue;
+				}
+
                 var inf = current.Infusions;
                 var prefix = inf.prefix;
                 var suffix = inf.suffix;
