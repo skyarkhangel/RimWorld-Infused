@@ -993,7 +993,7 @@
       <li>
         <key>MentalBreakThreshold</key>
         <value>
-          <offset>0.1</offset>
+          <offset>0.06</offset>
         </value>
       </li>
     </stats>
@@ -1015,7 +1015,7 @@
       <li>
         <key>MentalBreakThreshold</key>
         <value>
-          <offset>0.1</offset>
+          <offset>0.06</offset>
         </value>
       </li>
     </stats>
@@ -1386,7 +1386,7 @@
       <li>
         <key>MentalBreakThreshold</key>
         <value>
-          <offset>0.2</offset>
+          <offset>0.1</offset>
         </value>
       </li>
     </stats>
@@ -1408,7 +1408,7 @@
       <li>
         <key>MentalBreakThreshold</key>
         <value>
-          <offset>0.2</offset>
+          <offset>0.1</offset>
         </value>
       </li>
     </stats>
