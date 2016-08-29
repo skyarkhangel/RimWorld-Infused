@@ -70,7 +70,7 @@ namespace Infused
 			Messages.Message( ResourceBank.StringInfusionMessage.Translate( msg ), MessageSound.Silent );
 			InfusionSound.PlayOneShotOnCamera();
 
-			MoteThrower.ThrowText( parent.Position.ToVector3Shifted(), ResourceBank.StringInfused,
+			MoteMaker.ThrowText( parent.Position.ToVector3Shifted(), ResourceBank.StringInfused,
 			                       GenInfusionColor.Legendary );
 
 			isNew = false;
