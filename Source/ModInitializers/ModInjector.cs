@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
+using UnityEngine;
 using RimWorld;
 using Verse;
 
 namespace Infused
 {
+	[StaticConstructorOnStartup]
 	public class ModInjector
 	{
 		public static bool hasRun;
@@ -27,6 +29,11 @@ namespace Infused
 
 				return;
 			}
+
+			// until CCL for A15 appears...
+			GameObject initializer = new GameObject("InfusionMapComponentInjector");
+			initializer.AddComponent<MapComponentInjector>();
+			UnityEngine.Object.DontDestroyOnLoad(initializer);
 
 			var defs = (
 				from def in DefDatabase< ThingDef >.AllDefs
