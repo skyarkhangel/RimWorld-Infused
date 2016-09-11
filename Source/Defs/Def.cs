@@ -90,7 +90,6 @@ namespace Infused
 
 		public static Def Named( string defName )
 		{
-			Log.Message (defName);
 			return defName != null ? DefDatabase< Def >.GetNamed( defName ) : null;
 		}
 
