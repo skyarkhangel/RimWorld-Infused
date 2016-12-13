@@ -11,7 +11,7 @@ namespace Infused
 {
     public class MapComponent_InfusionManager : MapComponent
     {
-        public MapComponent_InfusionManager ()
+		public MapComponent_InfusionManager (Map map) : base(map)
         {
             // Clear old labels
             InfusionLabelManager.ReInit();
@@ -32,42 +32,11 @@ namespace Infused
             foreach (var current in InfusionLabelManager.Drawee)
             {
 				// skip fogged
-				if (Find.FogGrid.IsFogged (current.parent.Position)) {
+				if (Find.VisibleMap.fogGrid.IsFogged (current.parent.Position)) {
 					continue;
 				}
 
-                var inf = current.Infusions;
-                var prefix = inf.prefix;
-                var suffix = inf.suffix;
-
-                Color color;
-                //When there is only suffix
-				if (suffix != null)
-                {
-                    color = suffix.tier.InfusionColor();
-                }
-                //When there is only prefix
-				else if (prefix != null)
-                {
-                    color = prefix.tier.InfusionColor();
-                }
-                //When there are both prefix and suffix
-                else
-                {
-                    color = MathUtility.Max(prefix.tier, suffix.tier).InfusionColor();
-                }
-                var result = new StringBuilder();
-				if (prefix != null)
-                {
-                    result.Append(prefix.labelShort);
-					if (suffix != null)
-                        result.Append(" ");
-                }
-				if (suffix != null)
-                    result.Append(suffix.labelShort);
-
-                GenWorldUI.DrawThingLabel(
-                  GenWorldUI.LabelDrawPosFor(current.parent, -0.66f), result.ToString(), color);
+				GenMapUI.DrawThingLabel( GenMapUI.LabelDrawPosFor(current.parent, -0.66f), current.InfusedLabel, current.InfusedLabelColor );
             }
         }
     }

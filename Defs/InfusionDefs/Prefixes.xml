@@ -636,7 +636,7 @@
         </value>
       </li>
       <li>
-        <key>BaseHealingQuality</key>
+        <key>HealingQuality</key>
         <value>
           <multiplier>1.03</multiplier>
         </value>
@@ -733,7 +733,7 @@
         </value>
       </li>
       <li>
-        <key>BaseHealingQuality</key>
+        <key>HealingQuality</key>
         <value>
           <multiplier>1.07</multiplier>
         </value>

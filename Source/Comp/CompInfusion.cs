@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 
+using UnityEngine;
 using RimWorld;
 using Verse;
 using Verse.Sound;
@@ -18,12 +19,23 @@ namespace Infused
 		private string prefixDefName, suffixDefName;
 		private Def prefix, suffix;
 
+		private string infusedLabel;
+		private Color infusedLabelColor;
+
 		public InfusionSet Infusions {
 			get { return new InfusionSet (prefix, suffix); }
 		}
 
 		public bool Infused {
 			get { return prefix != null || suffix != null; }
+		}
+
+		public string InfusedLabel {
+			get { return infusedLabel; }
+		}
+
+		public Color InfusedLabelColor {
+			get { return infusedLabelColor; }
 		}
 
 		public void InitializeInfusionPrefix(InfusionTier tier)
@@ -70,7 +82,7 @@ namespace Infused
 			Messages.Message( ResourceBank.StringInfusionMessage.Translate( msg ), MessageSound.Silent );
 			InfusionSound.PlayOneShotOnCamera();
 
-			MoteMaker.ThrowText( parent.Position.ToVector3Shifted(), ResourceBank.StringInfused,
+			MoteMaker.ThrowText( parent.Position.ToVector3Shifted(), this.parent.Map, ResourceBank.StringInfused,
 			                       GenInfusionColor.Legendary );
 
 			isNew = false;
@@ -81,6 +93,32 @@ namespace Infused
 			base.PostSpawnSetup();
 
 			if (Infused) {
+				//When there is only suffix
+				if (suffix != null)
+				{
+					infusedLabelColor = suffix.tier.InfusionColor();
+				}
+				//When there is only prefix
+				else if (prefix != null)
+				{
+					infusedLabelColor = prefix.tier.InfusionColor();
+				}
+				//When there are both prefix and suffix
+				else
+				{
+					infusedLabelColor = MathUtility.Max(prefix.tier, suffix.tier).InfusionColor();
+				}
+
+				infusedLabel = "";
+				if (prefix != null)
+				{
+					infusedLabel += prefix.labelShort;
+					if (suffix != null)
+						infusedLabel += " ";
+				}
+				if (suffix != null)
+					infusedLabel += suffix.labelShort;
+
 				InfusionLabelManager.Register (this);
 
 				// We only throw notifications for newly spawned items.
@@ -116,9 +154,9 @@ namespace Infused
 #endif
 		}
 
-		public override void PostDeSpawn()
+		public override void PostDeSpawn (Map map)
 		{
-			base.PostDeSpawn();
+			base.PostDeSpawn (map);
 
 			if ( Infused )
 			{
