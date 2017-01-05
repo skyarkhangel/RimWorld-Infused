@@ -18,8 +18,11 @@ namespace Infused
 		//{1: golden sword} of {2: stream}
 		public static readonly string StringInfusionOf = "InfusionOf";
 
-		//Infusion bonuses
-		public static readonly string StringInfusionDescBonus = "InfusionDescBonus".Translate();
+        //SK TRANSLATION FIX
+        public static readonly string StringTranslationFix = "TranslationFix";
+
+        //Infusion bonuses
+        public static readonly string StringInfusionDescBonus = "InfusionDescBonus".Translate();
 		public static readonly string StringInfusionDescFrom = "InfusionDescFrom";
 
 		public static readonly string StringQuality = "InfusionQuality".Translate();

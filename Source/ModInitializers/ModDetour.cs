@@ -56,7 +56,7 @@ namespace Infused
 			var chance = GenInfusion.GetInfusionChance( thing, qc );
 			var rand = Rand.Value;
 #if DEBUG
-			Log.Message ("Infused :: Rolled " + ((rand < chance) ? "success" : "failure") + " " + rand + " < " + chance + " for " + thing + " and " + qc);
+		//	Log.Message ("Infused :: Rolled " + ((rand < chance) ? "success" : "failure") + " " + rand + " < " + chance + " for " + thing + " and " + qc);
 #endif
 			return rand < chance;
 		}

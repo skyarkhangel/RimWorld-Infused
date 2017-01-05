@@ -103,15 +103,17 @@ namespace Infused
         //Make a new infused label.
         private static string NewInfusedThingLabel( Thing thing, bool isStuffed, bool isDetailed )
         {
-			string thingLabel;
-			if ( isStuffed && thing.Stuff != null )
-			{
-				thingLabel = thing.Stuff.LabelAsStuff + " " + thing.def.label;
-			}
-			else
-			{
-				thingLabel = thing.def.label;
-			}
+            // SK FIX TRANSLATION
+            string thingLabel;
+            if (isStuffed && thing.Stuff != null)
+            {
+                //   thingLabel = thing.Stuff.LabelAsStuff + " " + thing.def.label;
+                thingLabel = ResourceBank.StringTranslationFix.Translate(thing.Stuff.LabelAsStuff, thing.def.label);
+            }
+            else
+            {
+                thingLabel = thing.def.label;
+            }
 
 			var result = new StringBuilder();
 
